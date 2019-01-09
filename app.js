@@ -11,7 +11,7 @@ app.use(cors());
 require('./passport');
 //require('./client/src/setupProxy')(app);
 
-app.use(express.static('static'));
+app.use(express.static(path.join(__dirname, 'client', 'build')));
 
 mongoose.connect(keys.mongoURI);
 
