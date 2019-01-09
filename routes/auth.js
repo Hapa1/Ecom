@@ -2,7 +2,7 @@ const passport = require('passport');
 var express = require('express');
 var mongoose = require('mongoose');
 var router = express.Router();
-var item = require('../models/user');
+var User = require('../models/user');
 
   router.get(
     '/auth/google',
@@ -25,12 +25,12 @@ var item = require('../models/user');
   });
 
   router.get('/api/current_user', (req, res) => {
-    //if(req.user == undefined) {
-    //  res.send({});
-    //}
-    //else {
       res.send(req.user);
-    //}
+  });
+
+  router.get('/api/user/:_id', async function(req, res){
+    const p = await User.find({ _id: req.params})
+    res.send(p[0]);
   });
  
-  module.exports = router;
+module.exports = router;

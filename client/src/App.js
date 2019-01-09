@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom'
+import { BrowserRouter, Route, Link } from 'react-router-dom'
 import logo from './logo.svg';
 import './App.css';
 import { Button } from 'react-bootstrap';
 import Nav from './components/nav.js';
+import Item from './components/item.js'
 import Landing from './components/landing.js'
 import axios from 'axios'
 import { throws } from 'assert';
@@ -58,22 +59,16 @@ class App extends Component {
 	}
 
   render() { 
-		let option
-		if (!!this.state.user){
-			option =
-			
-				this.state.user.name
-			
-		}
     return (
         <div className="App">
-				<BrowserRouter>
-          <Nav user={this.state.user}/>
-					<Route path="/auth/profile/:_id" component={Profile} />
-          <Landing/>
+					<BrowserRouter>
+						<div>
+						<Nav user={this.state.user}/>
+						<Route path="/items/:_id" component={Item} />
+						<Route exact path="/" component={Landing}/>
+						</div>
 					</BrowserRouter>
         </div>
-      
     );
   }
 }

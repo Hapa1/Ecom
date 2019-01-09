@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Grid } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Link, BrowserRouter, Route } from 'react-router-dom';
 import { NavDropdown } from 'react-bootstrap';
 import { MenuItem } from 'react-bootstrap';
 import '../App.css';
@@ -68,7 +68,7 @@ class Item extends React.Component {
         return (
         <div>
             <img src={item.imgUrl}></img>
-            <p><a href={"/api/items/"+item._id}>{item.name}</a></p>
+            <p><Link to={{ pathname: '/items/'+item._id, state: { _id: item._id} }}>{item.name}</Link></p>
             <p>${item.price}</p>
         </div>
         );
@@ -102,13 +102,15 @@ class landing extends React.Component {
     render() {
         return(
            
-        <div className="Landing">
+        <div>
             <header className="App-header">
-					<h1>Welcome to Ecom {option}</h1>	
+					<h1>Welcome to Ecom</h1>	
 			</header>
-            <Table
-                items={this.state.items}
-            />
+            <div className="Landing">
+                <Table
+                    items={this.state.items}
+                />
+            </div>
         </div>
         );
     }
