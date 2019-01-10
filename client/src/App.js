@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom'
+import { connect } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
 import { Button } from 'react-bootstrap';
@@ -8,6 +9,7 @@ import Item from './components/item.js'
 import Landing from './components/landing.js'
 import axios from 'axios'
 import { throws } from 'assert';
+import * as actions from './actions';
 
 function handleErrors(res) {
 	
@@ -31,6 +33,7 @@ class App extends Component {
 	
 
 	componentDidMount() {
+		this.props.fetchUser();
 		/** 
 				fetch('/api/current_user')
         .then(handleErrors)
@@ -72,5 +75,24 @@ class App extends Component {
     );
   }
 }
+/** 
+const mapStateToProps = (state) => {
+	return {
+		//user: state.user,
+	}
+}
+const mapDispatchToProps = (dispatch) => {
+	return {
+		setName: (name) => {
+			dispatch({
+				type:"SET_NAME",
+				payload: name
+			})
+		}
+	};
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+*/
 
-export default App;
+
+export default connect(null, actions)(App);

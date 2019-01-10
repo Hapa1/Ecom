@@ -2,17 +2,26 @@ import React, { Component } from 'react';
 import { Nav, Navbar, handleSelect, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, FormInline, Dropdown, DropdownToggle, DropdownMenu,  DropdownItem } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom'
 import '../App.css';
+import { connect } from 'react-redux';
 
 
 class nav extends React.Component{
-	constructor(props){
-		super(props)
-		this.state = {
-			name: null,
-		}
-	}
+	//constructor(props){
+	//	super(props)
+	//	this.state = {
+	//		name: null,
+	//	}
+	//}
 
 	render(){
+		let name 
+		if(this.props.user){
+			name = 'Welcome ' + this.props.user.name
+		}
+		else {
+			name = ''
+		}
+		console.log(name)
 		console.log(this.props.user)
 		let option
 		if (!!this.props.user){
@@ -36,6 +45,9 @@ class nav extends React.Component{
 					<a href='/'>React-Bootstrap</a>
 					</Navbar.Brand>
 				</Navbar.Header>
+				<Nav>
+					{name}
+				</Nav>
 				<Nav className="Nav">
 					{option}
 				</Nav>
@@ -118,5 +130,12 @@ class nav extends React.Component {
 }
  */
 
-export default nav;
+ const mapStatetoProps = (state) => {
+	 console.log(state);
+	 return {
+		user: state.user,
+	 }
+ }
+
+export default connect(mapStatetoProps)(nav);
 
