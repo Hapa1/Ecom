@@ -7,12 +7,16 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import { stat } from 'fs';
 import userReducer from './reducers/userReducer.js';
+import itemReducer from './reducers/itemReducer';
+import profileReducer from './reducers/profileReducer';
 document.title = "Ecom";
 
 const store = createStore(combineReducers({
-    user: userReducer,
+    userReducer,
+    itemReducer,
+    profileReducer,
+
 }),{},applyMiddleware(thunk));
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, 

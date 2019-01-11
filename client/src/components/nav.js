@@ -3,22 +3,18 @@ import { Nav, Navbar, handleSelect, NavbarBrand, NavbarNav, NavItem, NavLink, Na
 import { Redirect } from 'react-router-dom'
 import './App.css';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
 class nav extends React.Component{
 
 	render(){
-		let name 
+		let name = ''
 		if(this.props.user){
-			name = 'Welcome ' + this.props.user.name
+			name = <a href={"/user/" + this.props.user._id}>{this.props.user.name}</a>
 		}
-		else {
-			name = ''
-		}
-		console.log(name)
-		console.log(this.props.user)
 		let option
-		if (!!this.props.user){
+		if (this.props.user){
 			option =
 			<NavItem href="/api/logout">
 					Logout
@@ -28,7 +24,6 @@ class nav extends React.Component{
 			
 		}
 		else {
-			console.log(this.props.user)
 			option = 
 			<NavItem eventKey={1} href="/auth/google">
 			Sign In
@@ -36,16 +31,13 @@ class nav extends React.Component{
 		}
 		return(
 			<div>
-			
+			{name}
 			<Navbar>
 				<Navbar.Header>
 					<Navbar.Brand>
 					<a href='/'>React-Bootstrap</a>
 					</Navbar.Brand>
 				</Navbar.Header>
-				<Nav>
-					{name}
-				</Nav>
 				<Nav className="Nav">
 					{option}
 				</Nav>
@@ -129,9 +121,9 @@ class nav extends React.Component {
  */
 
  const mapStatetoProps = (state) => {
-	 console.log(state);
+	console.log("state", state);
 	 return {
-		user: state.user,
+		user: state.userReducer,
 	 }
  }
 

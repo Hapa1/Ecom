@@ -10,6 +10,7 @@ import Landing from './landing.js'
 import axios from 'axios'
 import { throws } from 'assert';
 import * as actions from '../actions';
+import Profile from './profile.js';
 
 function handleErrors(res) {
 	
@@ -35,30 +36,12 @@ class App extends Component {
 						<Nav/>
 						<Route path="/items/:_id" component={Item} />
 						<Route exact path="/" component={Landing}/>
+						<Route path="/user/:_id" component={Profile} />
 						</div>
 					</BrowserRouter>
         </div>
     );
   }
 }
-/** 
-const mapStateToProps = (state) => {
-	return {
-		//user: state.user,
-	}
-}
-const mapDispatchToProps = (dispatch) => {
-	return {
-		setName: (name) => {
-			dispatch({
-				type:"SET_NAME",
-				payload: name
-			})
-		}
-	};
-}
-export default connect(mapStateToProps, mapDispatchToProps)(App);
-*/
-
 
 export default connect(null, actions)(App);

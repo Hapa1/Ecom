@@ -5,13 +5,6 @@ import { MenuItem } from 'react-bootstrap';
 import './App.css';
 import Axios from 'axios';
 
-function handleErrors(response) {
-    if (!response.ok) {
-        throw Error(response.statusText);
-    }
-    return response;
-}
-
 class item extends React.Component{
     constructor(props){
         super(props)

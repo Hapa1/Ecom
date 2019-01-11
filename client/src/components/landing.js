@@ -7,6 +7,8 @@ import { NavDropdown } from 'react-bootstrap';
 import { MenuItem } from 'react-bootstrap';
 import './App.css';
 import * as actions from '../actions';
+import { connect } from 'react-redux';
+
 
 class Table extends React.Component {
     
@@ -14,14 +16,7 @@ class Table extends React.Component {
     const row1 = [];
     const row2 = [];
     const row3 = [];
-    
-    //var result = chunkArray(this.props.items, 3);
-    //console.log(result[0]);
-    //console.log(result[1]);
-    //console.log(result[2]);
-    //var arr1 = result[0];
-    //var arr2 = result[1];
-    //var arr3 = result[2];
+
     var num = 0;
     this.props.items.forEach((item) => {
         if(num % 3 == 0){
@@ -76,42 +71,23 @@ class Item extends React.Component {
       }
 }
 
-
 class landing extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          error: null,
-          isLoaded: false,
-          items: [],
-          value: 0
-        };
-    }
-
+    
     componentDidMount() {
-        //this.props.fetchItems();
-
-        fetch('api/items')
-        .then(handleErrors)
-          .then(res => {
-                return res.json()
-          })
-          .then(items => {
-            this.setState({ items })
-          });
-        
+        this.props.fetchItems();
     }
 
     render() {
-        return(
-           
+        return(    
         <div>
+
             <header className="App-header">
 					<h1>Welcome to Ecom</h1>	
+                    
 			</header>
             <div className="Landing">
                 <Table
-                    items={this.state.items}
+                    items={this.props.items}
                 />
             </div>
         </div>
@@ -119,7 +95,12 @@ class landing extends React.Component {
     }
 }
 
+const mapStateToProps = (state) => {
+	return {
+        items: state.itemReducer,
+    }
+    
+}
 
-
-export default landing;
+export default connect(mapStateToProps, actions)(landing);
 
