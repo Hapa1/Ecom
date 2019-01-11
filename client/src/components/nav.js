@@ -31,13 +31,15 @@ class nav extends React.Component{
 		}
 		return(
 			<div>
-			{name}
 			<Navbar>
 				<Navbar.Header>
 					<Navbar.Brand>
 					<a href='/'>React-Bootstrap</a>
 					</Navbar.Brand>
 				</Navbar.Header>
+				<Nav className="Nav">
+					{name}
+				</Nav>
 				<Nav className="Nav">
 					{option}
 				</Nav>
