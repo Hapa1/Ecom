@@ -5,7 +5,8 @@ import { Col } from 'react-bootstrap';
 import { Link, BrowserRouter, Route } from 'react-router-dom';
 import { NavDropdown } from 'react-bootstrap';
 import { MenuItem } from 'react-bootstrap';
-import '../App.css';
+import './App.css';
+import * as actions from '../actions';
 
 class Table extends React.Component {
     
@@ -88,6 +89,8 @@ class landing extends React.Component {
     }
 
     componentDidMount() {
+        //this.props.fetchItems();
+
         fetch('api/items')
         .then(handleErrors)
           .then(res => {

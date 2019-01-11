@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
 import { Button } from 'react-bootstrap';
-import Nav from './components/nav.js';
-import Item from './components/item.js'
-import Landing from './components/landing.js'
+import Nav from './nav.js';
+import Item from './item.js'
+import Landing from './landing.js'
 import axios from 'axios'
 import { throws } from 'assert';
-import * as actions from './actions';
+import * as actions from '../actions';
 
 function handleErrors(res) {
 	
@@ -22,51 +22,17 @@ function handleErrors(res) {
 }
 
 class App extends Component {
-  constructor() {
-		super()
-		this.state = {
-			loggedIn: false,
-			user: null,
-		}
-	}
-	
-	
 
 	componentDidMount() {
 		this.props.fetchUser();
-		/** 
-				fetch('/api/current_user')
-        .then(handleErrors)
-          .then(res => {
-                return res.json()
-          })
-          .then(user => {
-            this.setState({ user })
-          });
-      */      				
-		axios.get('/api/current_user').then(res => {
-			if (!!res.data) {
-				console.log('THERE IS A USER')
-				this.setState({
-					loggedIn: true,
-					user: res.data
-				})
-			} else {
-				console.log('THERE IS NOOOO USER')
-				this.setState({
-					loggedIn: false,
-					user: null
-				})
-			}		
-		})
 	}
-
+	
   render() { 
     return (
         <div className="App">
 					<BrowserRouter>
 						<div>
-						<Nav user={this.state.user}/>
+						<Nav/>
 						<Route path="/items/:_id" component={Item} />
 						<Route exact path="/" component={Landing}/>
 						</div>

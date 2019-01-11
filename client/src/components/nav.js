@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 import { Nav, Navbar, handleSelect, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, FormInline, Dropdown, DropdownToggle, DropdownMenu,  DropdownItem } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom'
-import '../App.css';
+import './App.css';
 import { connect } from 'react-redux';
 
 
 class nav extends React.Component{
-	//constructor(props){
-	//	super(props)
-	//	this.state = {
-	//		name: null,
-	//	}
-	//}
 
 	render(){
 		let name 
@@ -30,7 +24,11 @@ class nav extends React.Component{
 					Logout
 			</NavItem>
 		}
+		else if(this.props.user == null){
+			
+		}
 		else {
+			console.log(this.props.user)
 			option = 
 			<NavItem eventKey={1} href="/auth/google">
 			Sign In

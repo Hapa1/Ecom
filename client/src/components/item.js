@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { NavDropdown } from 'react-bootstrap';
 import { MenuItem } from 'react-bootstrap';
-import '../App.css';
+import './App.css';
 import Axios from 'axios';
 
 function handleErrors(response) {
