@@ -13,7 +13,7 @@ class nav extends React.Component{
 			
 			return (
 				<nav class="navbar navbar-expand-sm bg-primary navbar-primary">
-					<a class="navbar-brand" href="/"><img className="Logo" src={require('./Logo.svg')}></img></a>
+					<a class="navbar-brand" href="/"><img className="Logo" ></img></a>
 					<div class="collapse navbar-collapse" style={{marginTop:"5%"}}>
 						<ul class="navbar-nav ml-auto">
 						<li class="nav-item">
