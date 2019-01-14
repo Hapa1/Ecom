@@ -26,12 +26,13 @@ var price = (Math.floor(Math.random() * 100) + 1);
 var adjective = Sentencer.make("{{ adjective }}")
 var name = adjective + " shoe";
 
+
 var a = new item({
     name: name,
     price: price,
-    imgUrl: url
+    imgUrl: url,
+    gender: 'Male',
+    category: 'Clothes'
 });
-a.save(function (err) {
-        if (err) return handleError(err);
-        
-});
+console.log(a);
+a.save();

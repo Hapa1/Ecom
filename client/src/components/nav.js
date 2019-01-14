@@ -11,7 +11,7 @@ class nav extends React.Component{
 	render(){
 		let name = ''
 		if(this.props.user){
-			name = <a href={"/user/" + this.props.user._id}>{this.props.user.name}</a>
+			name = <div>Welcome back&nbsp;<a href={"/user/" + this.props.user._id}>{this.props.user.name}</a></div>
 		}
 		let option
 		if (this.props.user){
@@ -38,10 +38,23 @@ class nav extends React.Component{
 					</Navbar.Brand>
 				</Navbar.Header>
 				<Nav className="Nav">
-					{name}
+					
 				</Nav>
 				<Nav className="Nav">
+					
+				</Nav>
+				<Nav className="Nav">
+					<div>
 					{option}
+					</div>
+					<div>
+					{name}
+					</div>
+					<div>
+					Mens
+					</div>
+					
+					Womens
 				</Nav>
 			</Navbar>
 			

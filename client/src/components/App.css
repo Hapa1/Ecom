@@ -18,6 +18,17 @@
   color: black;
 }
 
+.App-header2 {
+  background-color: whitesmoke;
+  min-height: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: black;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -53,6 +64,10 @@
 .Nav-item {
   flex: 1;
   
+}
+
+.Banner {
+  width: 100%
 }
 
 @keyframes App-logo-spin {
