@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom'
 import './App.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import logo from './Logo.svg';
 
 
 class nav extends React.Component{
@@ -13,7 +14,7 @@ class nav extends React.Component{
 			
 			return (
 				<nav class="navbar navbar-expand-sm bg-primary navbar-primary">
-					<a class="navbar-brand" href="/"><img className="Logo" ></img></a>
+					<a class="navbar-brand" href="/"><img className="Logo" src={logo}></img></a>
 					<div class="collapse navbar-collapse" style={{marginTop:"5%"}}>
 						<ul class="navbar-nav ml-auto">
 						<li class="nav-item">
