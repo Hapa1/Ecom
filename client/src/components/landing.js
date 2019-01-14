@@ -8,6 +8,8 @@ import { MenuItem } from 'react-bootstrap';
 import './App.css';
 import * as actions from '../actions';
 import { connect } from 'react-redux';
+import Carousel from './carousel';
+import Head from "react-helmet";
 
 
 class Table extends React.Component {
@@ -79,36 +81,9 @@ class landing extends React.Component {
 
     render() {
         return(    
-        <div>
-<div>
-  <h2>Carousel Example</h2>
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    </ol>
-
-    <div class="carousel-inner">
-    <div class="item active">
-        <img className="Banner" src="https://images.adidas.com/image/upload/f_auto,q_auto,fl_lossy/enUS/Images/HP-MH-C80-DT-W-1920X800_tcm221-320204.jpg" alt="Los Angeles"/>
-        <div class="carousel-caption">
-          <h3>Los Angeles</h3>
-          <p>LA is always so much fun!</p>
-        </div>
-    </div>
-    </div>
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div>
-            
-
+        
+        <div>   
+            <Carousel/>
             <div className="Landing">
                 <Table
                     items={this.props.items}

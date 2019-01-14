@@ -46,6 +46,92 @@
   margin-top: 15px;
 }
 
+.Atag {
+  color: whitesmoke !important;
+}
+
+.Tab {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+ul li {display: inline-block;}
+ul li:hover ul {display: block;}
+ul li ul {
+  position: absolute;
+  width: 100%;
+  display: none;
+  z-index: 2;
+}
+ul li ul li { 
+  background: white; 
+  display: block; 
+}
+ul li ul li a {display:block !important;} 
+
+.Logo {
+  width: 70%;
+  height: 100%;
+}
+.Tab {
+  margin: 10px;
+}
+#some-element1 {
+  border: 1px solid #ccc;
+  display: none;
+  font-size: 10px;
+  margin-top: 10px;
+  padding: 5px;
+  text-transform: uppercase;
+
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#some-div1:hover #some-element1{
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: black;
+  background-color: whitesmoke;
+}
+
+#some-element2 {
+  border: 1px solid #ccc;
+  display: none;
+  font-size: 10px;
+  margin-top: 10px;
+  padding: 5px;
+  text-transform: uppercase;
+}
+
+#some-div2:hover #some-element2 {
+  display: block;
+}
+
+.tabs {
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
+
+
 .NavItem {
   color: #282c34 !important;
   flex: 1;
@@ -56,9 +142,8 @@
   color: #282c34 !important;
 }
 
-.Nav {
-  display: flex;
-  flex-direction: row !important;
+.nav {
+  color: white;
 }
 
 .Nav-item {
