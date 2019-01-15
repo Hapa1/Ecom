@@ -21,3 +21,12 @@ export const getUser = (_id) => async dispatch => {
     payload: res.data,
   })
 }
+
+export const getItem = (_id) => async dispatch => {
+  const res = await axios.get('/api/items/' + _id)
+  console.log('fetch item');
+  dispatch({
+    type: "FETCH_ITEM",
+    payload: res.data,
+  })
+};
