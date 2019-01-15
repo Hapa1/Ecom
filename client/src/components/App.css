@@ -50,31 +50,6 @@
   color: whitesmoke !important;
 }
 
-.Tab {
-  display: inline;
-  margin: 0;
-  padding: 0;
-}
-
-ul {
-  display: inline;
-  margin: 0;
-  padding: 0;
-}
-ul li {display: inline-block;}
-ul li:hover ul {display: block;}
-ul li ul {
-  position: absolute;
-  width: 100%;
-  display: none;
-  z-index: 2;
-}
-ul li ul li { 
-  background: white; 
-  display: block; 
-}
-ul li ul li a {display:block !important;} 
-
 .Logo {
   width: 70%;
   height: 100%;
@@ -126,8 +101,8 @@ ul li ul li a {display:block !important;}
 }
 
 .tabs {
-  margin-left: 30%;
-  margin-right: 30%;
+  margin-left: 33%;
+  margin-right: 33%;
 }
 
 
@@ -162,4 +137,58 @@ ul li ul li a {display:block !important;}
   to {
     transform: rotate(360deg);
   }
+}
+
+.bar {
+  overflow: hidden;
+}
+
+.bar .baritem {
+  float: center;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+.down {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.down .btn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: #485051;
+  font-size: 20px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.baritem {
+  color: #485051!important;
+}
+.down-content {
+  display: none;
+  padding-left: 30%;
+  padding-right: 30%;
+  padding-bottom: 15px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+
+.down-content .baritem {
+  display: block;
+  text-align: left;
+}
+
+.down:hover .down-content {
+  display: block;
 }

@@ -4,7 +4,6 @@ import { Redirect } from 'react-router-dom'
 import './App.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import logo from './Logo.svg';
 
 
 class nav extends React.Component{
@@ -13,8 +12,8 @@ class nav extends React.Component{
 		if (this.props.user){
 			
 			return (
-				<nav class="navbar navbar-expand-sm bg-primary navbar-primary">
-					<a class="navbar-brand" href="/"><img className="Logo" src={logo}></img></a>
+				<nav style={{paddingBottom:'0px',paddingTop:'0px',paddingLeft:'0px', padding:'0px'}}class="navbar navbar-expand-sm bg-primary navbar-primary">
+					<a href="/"><img className="Logo" src='https://s3-us-west-1.amazonaws.com/lootbox1/public/Logo.svg'></img></a>
 					<div class="collapse navbar-collapse" style={{marginTop:"5%"}}>
 						<ul class="navbar-nav ml-auto">
 						<li class="nav-item">
