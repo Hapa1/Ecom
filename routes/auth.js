@@ -33,4 +33,16 @@ var User = require('../models/user');
     res.send(p[0]);
   });
  
+  router.post('/api/profile', async function(req, res) {
+    //console.log(req.body.user.id)
+    const p = await User.find({ _id: '5c35bd2f000344119e66c3ef'})
+    console.log(req.body.name)
+    p.name = req.body.name
+    try {
+      await p.save(); //async function
+      res.send(comment)
+    } catch (err) {
+      res.status(422).send(err);
+    }
+  })
 module.exports = router;

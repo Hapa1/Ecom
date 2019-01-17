@@ -30,3 +30,13 @@ export const getItem = (_id) => async dispatch => {
     payload: res.data,
   })
 };
+
+export const updateProfile = (values) => async dispatch => {
+  console.log("Action!")
+  const res = await axios.post('/api/profile', values);
+  dispatch({ type: "FETCH_USER", payload: res.data});
+};
+
+export const test = () => {
+  console.log('hello!');
+};

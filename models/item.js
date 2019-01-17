@@ -19,7 +19,7 @@ const baseOptions = {
 
 var itemSchema= new Schema({
     name: {type: String, required: true, default: 'Shirt'},
-    description: {type: String, required: true, default: 'This is a description'},
+    description: {type: String, required: true, default: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'},
     price: {type: Number, required: true, default: 9.99},
     imgUrl: {type: String, default: 'https://www.adidas.com/dis/dw/image/v2/aaqx_prd/on/demandware.static/-/Sites-adidas-products/en_US/dwc822fb7d/zoom/CG4117_00_plp_standard.jpg?sw=276&sh=276&sm=fit&hei=276&wid=276&strip=false'},
     size: {type: String, enum: ['XS', 'S', 'M', 'L', 'XL'], default: 'M'},

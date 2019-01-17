@@ -11,7 +11,8 @@ import axios from 'axios'
 import { throws } from 'assert';
 import * as actions from '../actions';
 import Profile from './profile.js';
-import Head from "react-helmet";
+import InputForm from './input.js';
+import { reduxForm, Field } from 'redux-form'
 
 function handleErrors(res) {
 	
@@ -23,6 +24,8 @@ function handleErrors(res) {
 	return res;
 }
 
+
+
 class App extends Component {
 
 	componentDidMount() {
@@ -32,15 +35,15 @@ class App extends Component {
   render() { 
     return (
         <div className="App">
-					<BrowserRouter>
-						<div>
-						<Nav/>
-						<Header/>
-						<Route path="/items/:_id" component={Item} />
-						<Route exact path="/" component={Landing}/>
-						<Route path="/user/:_id" component={Profile} />
-						</div>
-					</BrowserRouter>
+			<BrowserRouter>
+				<div>		
+				<Nav/>
+				<Header/> 
+				<Route path="/items/:_id" component={Item} />
+				<Route exact path="/" component={Landing}/>
+				<Route path="/user/:_id" component={Profile} />
+				</div>
+				</BrowserRouter>
         </div>
     );
   }

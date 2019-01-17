@@ -9,6 +9,9 @@ const userSchema = new Schema({
 	imgUrl: {type: String, default: 'https://www.manufacturingusa.com/sites/manufacturingusa.com/files/default.png'},
 	firstName: String,
 	lastName: String,
+	email: String,
+	address: String,
+	
 
 	// local: {
 	// 	email: { type: String, unique: true },

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as actions from '../actions/index.js';
 import { connect } from 'react-redux';
-
+import Form from './profile/form';
 class profile extends React.Component{
     componentDidMount(){
         this.props.getUser(this.props.match.params._id);
@@ -18,15 +18,16 @@ class profile extends React.Component{
         //}
         return (
             <div>
+                
                 Profile!
                {option}
+               <Form/>
             </div>
         )
     }
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         profile: state.profileReducer
     }

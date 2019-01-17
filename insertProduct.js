@@ -29,7 +29,7 @@ var name = adjective + " shoe";
 
 var a = new item({
     name: name,
-    price: price,
+    price: price + .99,
     imgUrl: url,
     gender: 'Male',
     category: 'Clothes'

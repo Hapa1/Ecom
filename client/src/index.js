@@ -11,13 +11,17 @@ import thunk from 'redux-thunk';
 import userReducer from './reducers/userReducer.js';
 import itemReducer from './reducers/itemReducer';
 import profileReducer from './reducers/profileReducer';
-document.title = "Ecom";
+import singleItemReducer from './reducers/singleItemReducer';
+import { reducer as formReducer } from 'redux-form';
+import Input from './components/input.js'
+document.title = "Lootbox";
 
 const store = createStore(combineReducers({
+    form: formReducer,
     userReducer,
     itemReducer,
     profileReducer,
-
+    singleItemReducer,
 }),{},applyMiddleware(thunk));
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, 

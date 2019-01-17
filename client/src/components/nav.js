@@ -35,12 +35,15 @@ class nav extends React.Component{
 		}
 		else {
 			return(
-				<nav class="navbar navbar-expand-sm bg-primary navbar-primary">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item">
-					<a style={{color:"white"}} class="nav-link" href="/auth/google">Sign In</a>
-					</li>
-				</ul>
+				<nav style={{paddingBottom:'0px',paddingTop:'0px',paddingLeft:'0px', padding:'0px'}}class="navbar navbar-expand-sm bg-primary navbar-primary">
+					<a href="/"><img className="Logo" src='https://s3-us-west-1.amazonaws.com/lootbox1/public/Logo.svg'></img></a>
+					<div class="collapse navbar-collapse" style={{marginTop:"5%"}}>
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item">
+							<a style={{color:"white"}} class="nav-link" href="/auth/google">Sign In</a>
+							</li>
+						</ul>
+					</div>
 				</nav>
 			
 			)
@@ -52,7 +55,6 @@ class nav extends React.Component{
 }
 
  const mapStatetoProps = (state) => {
-	console.log("state", state);
 	 return {
 		user: state.userReducer,
 	 }

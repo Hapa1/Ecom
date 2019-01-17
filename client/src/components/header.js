@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom'
 import './App.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import InputForm from './input';
 
 
 class Header extends React.Component{
@@ -12,6 +13,7 @@ class Header extends React.Component{
 
 			return (
 <div class="bar">
+    
   <div class="down">
     <button class="btn">MEN</button>
     <div class="down-content">

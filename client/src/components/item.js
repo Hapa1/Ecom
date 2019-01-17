@@ -4,48 +4,84 @@ import { NavDropdown } from 'react-bootstrap';
 import { MenuItem } from 'react-bootstrap';
 import './App.css';
 import Axios from 'axios';
+import * as actions from '../actions/index.js';
+import { connect } from 'react-redux';
+import InputForm from './input';
+import { initialize } from 'redux-form';
 
 class item extends React.Component{
-    constructor(props){
-        super(props)
-        this.state = {
-            item: {},
-        }
-    }
+
     componentDidMount(){
-        console.log("MOUNTED!")
-        console.log(this.props);
-         
-        Axios.get('/api/items/'+this.props.location.state._id).then(
-            res => {
-                console.log(res.data)
-                this.setState({ item: res.data })
-            }
-        )
-        
-       /** 
-        fetch('http://localhost:5000/api/items/'+this.props.location.state._id)
-        .then(handleErrors)
-          .then(res => {
-                return res.json()
-          })
-          .then(item => {
-            this.setState({ item: item })
-          });
-        console.log(this.state)
-        */
+        this.props.getItem(this.props.match.params._id);
     }
+
+    handleSubmit(data) {
+        console.log('Submission received!', data);
+        
+    }
+
     render(){
-        item = this.state.item
-        return(
-            <div>
-                ITEM!
-                <div>{item.name}</div>
-                <div><img src={item.imgUrl}/></div>
-                
-            </div>
-        )
+        
+        if (this.props.item){
+            console.log(this.props.item)
+            return(
+            
+                <div>
+                    <div style={{marginTop:"50px"}} class="container">     
+                        <div class="row">
+                        <div class="col-sm-2">
+                            
+                        </div>
+                        <div class="col-sm-4">
+                            <div><img src={this.props.item.imgUrl}/></div>
+                        </div>
+                        <div style={{textAlign:'left'}}class="col-sm-4">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div><b><h4>{this.props.item.name}</h4></b></div>
+                                </div>
+                                <div style={{paddingTop:'5px',textAlign:'right'}} class="col-sm-6">
+                                    <div><b>${this.props.item.price}</b></div>
+                              
+                                    
+                                </div>
+                            </div>
+                            <div style={{marginTop:'15px',marginBottom:'15px'}}>
+                                <button type="button" class="btn btn-primary">Add to Cart</button>
+                            </div>
+                            
+                            
+                            
+                            <div style={{color:'#5d5b5b'}}>{this.props.item.description}</div>
+                        </div>
+                        <div class="col-sm-2">
+                        
+                        </div>
+                        </div>
+                    </div>
+                <div>
+                        
+                <InputForm/>  
+
+                </div>
+                    
+                </div>
+            )
+        }
+        else {
+            return(
+                <div>
+                    Loading
+                </div>
+            )
+        }
     }
 }
 
-export default item;
+const mapStateToProps = (state) => {
+    return {
+        item: state.singleItemReducer,
+    }
+}
+
+export default connect(mapStateToProps, actions)(item);

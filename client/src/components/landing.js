@@ -18,17 +18,21 @@ class Table extends React.Component {
     const row1 = [];
     const row2 = [];
     const row3 = [];
+    const row4 = [];
 
     var num = 0;
     this.props.items.forEach((item) => {
-        if(num % 3 == 0){
+        if(num % 4 == 0){
             row1.push(<Item item={item} key={item._id}/>);
         }
-        else if(num % 3 == 1) {
+        else if(num % 4 == 1) {
             row2.push(<Item item={item} key={item._id}/>);
         }
-        else if(num % 3 == 2){
+        else if(num % 4 == 2){
             row3.push(<Item item={item} key={item._id}/>);
+        }
+        else if(num % 4 == 3){
+            row4.push(<Item item={item} key={item._id}/>);
         }
         num++;
     });
@@ -36,14 +40,17 @@ class Table extends React.Component {
         <div>
             <Grid>
                 <Row>
-                    <Col xs={6} md={4}>
+                    <Col xs={6} md={3}>
                         {row1}
                     </Col>
-                    <Col xs={6} md={4}>
+                    <Col xs={6} md={3}>
                         {row2}
                     </Col>
-                    <Col xs={6} md={4}>
+                    <Col xs={6} md={3}>
                         {row3}
+                    </Col>
+                    <Col xs={6} md={3}>
+                        {row4}
                     </Col>
                 </Row>
             </Grid>
@@ -85,14 +92,15 @@ class landing extends React.Component {
         <div>   
             <Carousel/>
             <div className="Landing">
+            <header className="App-header2">
+					<h2>WHAT'S TRENDING</h2>	
+			</header> 
                 <Table
                     items={this.props.items}
                 />
             </div>
 
-            <header className="App-header2">
-					<h2>Start out the new year with Cloud Outlets</h2>	
-			</header> 
+            
 
 
         </div>

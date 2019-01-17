@@ -4,10 +4,12 @@ var router = express.Router();
 var item = require('../models/item');
 var Comment = require('../models/comment');
 
-router.post('/api/comment', async function(req, res) {
-    const text = req.body.text;
+router.post('/api/items/createcomment', async function(req, res) {
+    console.log(req.body)
     var comment = new Comment({
-        text: text
+        //text: //req.body.text,
+        //_user: //req.body.user._id,
+        //_item: //req.params,
     })
     try {
         await comment.save(); //async function
@@ -16,7 +18,5 @@ router.post('/api/comment', async function(req, res) {
         res.status(422).send(err);
     }
 });
-
-
 
 module.exports = router;
