@@ -44,5 +44,6 @@ var User = require('../models/user');
     } catch (err) {
       res.status(422).send(err);
     }
+    res.send(p);
   })
 module.exports = router;

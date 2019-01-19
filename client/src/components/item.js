@@ -1,29 +1,42 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import { NavDropdown } from 'react-bootstrap';
-import { MenuItem } from 'react-bootstrap';
 import './App.css';
-import Axios from 'axios';
 import * as actions from '../actions/index.js';
 import { connect } from 'react-redux';
 import InputForm from './input';
-import { initialize } from 'redux-form';
 
+const Thread = (comments) => {
+    const row = []
+    comments.comments.forEach((comment) => {
+       row.push(<Comment comment={comment} key={comment._id}/>)
+    });
+    return(<div>{row}</div>)
+}
+
+const Comment = (comment) => {
+    return (
+        <div>
+            <p>{comment.comment.text}</p>
+        </div>
+    )
+}
 class item extends React.Component{
+    constructor(props) {
+        super(props);
+    }
 
     componentDidMount(){
         this.props.getItem(this.props.match.params._id);
+        this.props.fetchComments(this.props.match.params._id)
+        
     }
 
-    handleSubmit(data) {
-        console.log('Submission received!', data);
-        
+    handleSubmit = (data) => {
+        this.props.createComment(data.comment,this.props.match.params._id)
+        this.props.fetchComments(this.props.match.params._id)
     }
 
     render(){
-        
         if (this.props.item){
-            console.log(this.props.item)
             return(
             
                 <div>
@@ -48,10 +61,7 @@ class item extends React.Component{
                             </div>
                             <div style={{marginTop:'15px',marginBottom:'15px'}}>
                                 <button type="button" class="btn btn-primary">Add to Cart</button>
-                            </div>
-                            
-                            
-                            
+                            </div>                
                             <div style={{color:'#5d5b5b'}}>{this.props.item.description}</div>
                         </div>
                         <div class="col-sm-2">
@@ -61,10 +71,13 @@ class item extends React.Component{
                     </div>
                 <div>
                         
-                <InputForm/>  
-
+                <InputForm id={this.props.item._id} onSubmit={this.handleSubmit}/>  
+                
                 </div>
-                    
+                    <Thread comments={this.props.comments}/>
+                    <div>
+                    <h1>Hello!</h1>
+                    </div>
                 </div>
             )
         }
@@ -81,6 +94,7 @@ class item extends React.Component{
 const mapStateToProps = (state) => {
     return {
         item: state.singleItemReducer,
+        comments: state.commentReducer
     }
 }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as actions from '../actions';
 import {reducer as formReducer, reduxForm, Field} from 'redux-form';
+import { connect } from 'react-redux';
 
 const validate = values => {
   const errors = {}
@@ -40,45 +41,24 @@ const RenderSelect = createRenderer((input, label, { children }) =>
 
 
 class InputForm extends Component {
+    //this.props.handleSubmit(values => (this.props.createComment(values,this.props.id)))
   
     render() {
       return (
-        <form onSubmit={this.props.handleSubmit(values => console.log(values))}>
+        <form onSubmit={this.props.handleSubmit}>
           <label>Comment</label>
-          <Field name="comment" label="comment" component={RenderInput}></Field>
-          <button type="submit">Submit</button>
+          <Field name="comment" component={RenderInput}></Field>
         </form>
       );
     }
-}
-/** 
 
-let InputForm = (props) => {
-  console.log(props)
-  const { handleSubmit } = props
-  return(
-  <form onSubmit={handleSubmit(submit)}>
-    <Field name="comment" label="Comment" component={RenderInput} />
-    <button type="submit">
-      Submit
-    </button>
-  </form>
-  )
+
 }
 
-*/
-
-const mapStateToProps = (state) => {
-  console.log(state)
-  return  {
-    user: state.userReducer,
-    item: state.singleItemReducer
-  }
-  
-}
-
-export default InputForm = reduxForm({
+InputForm = reduxForm({
     validate,
     form: 'commentForm',
-    field: 'comment'
+    field: 'comment',
 })(InputForm);
+
+export default connect(null, actions)(InputForm);

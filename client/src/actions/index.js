@@ -32,10 +32,21 @@ export const getItem = (_id) => async dispatch => {
 };
 
 export const updateProfile = (values) => async dispatch => {
-  console.log("Action!")
   const res = await axios.post('/api/profile', values);
   dispatch({ type: "FETCH_USER", payload: res.data});
 };
+
+export const createComment = (text, id) => async dispatch => {
+  console.log("values",text)
+  console.log("id",id)
+  const res = await axios.post('/api/createcomment', {text, id});
+  dispatch({ type: "FETCH_ITEMS", payload: res.data});
+};
+
+export const fetchComments = (_id) => async dispatch => {
+  const res = await axios.get('/api/getcomments/'+ _id);
+  dispatch({ type: "FETCH_COMMENTS", payload: res.data});
+}
 
 export const test = () => {
   console.log('hello!');

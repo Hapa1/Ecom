@@ -16,7 +16,7 @@ class ProfileForm extends Component {
         )
     }
     render() {
-       console.log(this.props) 
+       console.log("PROPS",this.props) 
       return (
         <form onSubmit={this.props.handleSubmit(values => (this.props.updateProfile(values)))}>
           {this.renderfield()}

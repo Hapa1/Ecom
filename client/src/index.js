@@ -12,6 +12,7 @@ import userReducer from './reducers/userReducer.js';
 import itemReducer from './reducers/itemReducer';
 import profileReducer from './reducers/profileReducer';
 import singleItemReducer from './reducers/singleItemReducer';
+import commentReducer from './reducers/commentReducer';
 import { reducer as formReducer } from 'redux-form';
 import Input from './components/input.js'
 document.title = "Lootbox";
@@ -22,6 +23,8 @@ const store = createStore(combineReducers({
     itemReducer,
     profileReducer,
     singleItemReducer,
+    commentReducer,
+
 }),{},applyMiddleware(thunk));
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, 
@@ -36,6 +39,12 @@ ReactDOM.render(<Provider store={store}><App /></Provider>,
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+//////////////////////////////////
+//                              //
+//  REDUX CODE FOR REFERENCE!!! //
+//                              //
+//////////////////////////////////
 
 //import { createStore } from 'redux';
 
