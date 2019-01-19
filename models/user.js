@@ -11,7 +11,10 @@ const userSchema = new Schema({
 	lastName: String,
 	email: String,
 	address: String,
-	
+	comments: [{
+		type: Schema.Types.ObjectId, ref: 'comment'
+	}]
+
 
 	// local: {
 	// 	email: { type: String, unique: true },

@@ -27,13 +27,32 @@ class item extends React.Component{
     componentDidMount(){
         this.props.getItem(this.props.match.params._id);
         this.props.fetchComments(this.props.match.params._id)
-        
     }
 
     handleSubmit = (data) => {
         this.props.createComment(data.comment,this.props.match.params._id)
         this.props.fetchComments(this.props.match.params._id)
     }
+
+    renderFields(){
+        let commented = 0
+        this.props.comments.forEach(comment => {
+            if(comment._user == this.props.user._id){
+                commented = 1;
+            }
+        })
+        if(commented == 1){
+            return(<div>
+                
+            </div>)
+        }
+        else{
+            return(
+                <InputForm id={this.props.item._id} onSubmit={this.handleSubmit}/> 
+            )
+        }
+    }
+    
 
     render(){
         if (this.props.item){
@@ -69,10 +88,8 @@ class item extends React.Component{
                         </div>
                         </div>
                     </div>
-                <div>
-                        
-                <InputForm id={this.props.item._id} onSubmit={this.handleSubmit}/>  
-                
+                <div> 
+                {this.renderFields()}
                 </div>
                     <Thread comments={this.props.comments}/>
                     <div>
@@ -94,7 +111,8 @@ class item extends React.Component{
 const mapStateToProps = (state) => {
     return {
         item: state.singleItemReducer,
-        comments: state.commentReducer
+        comments: state.commentReducer,
+        user: state.userReducer
     }
 }
 

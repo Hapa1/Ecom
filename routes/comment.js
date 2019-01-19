@@ -12,7 +12,9 @@ router.post('/api/createcomment', async function(req, res) {
     })
     try {
         await comment.save(); //async function
-        res.send(comment)
+        req.user.comments.push(comment)
+        const u = await req.user.save()
+        res.send(u)
       } catch (err) {
         res.status(422).send(err);
     }

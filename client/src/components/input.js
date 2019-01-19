@@ -10,49 +10,33 @@ const validate = values => {
   }
 }
 
+const maxLength = max => value =>
+  value && value.length > max ? `Must be ${max} characters or less` : undefined
+const maxLength255 = maxLength(255)
+const required = value => value ? undefined : 'Required'
 
-const createRenderer = render => ({ input, meta, label, ...rest }) =>
-  <div
-    className={[
-      meta.error && meta.touched ? 'error' : '',
-      meta.active ? 'active' : ''
-    ].join(' ')}
-  >
-    <label>
-      {label}
-    </label>
-    {render(input, label, rest)}
-    {meta.error &&
-      meta.touched &&
-      <span>
-        {meta.error}
-      </span>}
-  </div>
-
-const RenderInput = createRenderer((input, label) =>
-  <input {...input} placeholder={label} />
-)
-
-const RenderSelect = createRenderer((input, label, { children }) =>
-  <select {...input}>
-    {children}
-  </select>
-)
-
+  const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
+    <div>
+      <label>{label}</label>
+      <div>
+        <input {...input} class="form-control" placeholder={label} type={type}/>
+        {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+      </div>
+    </div>
+  )
 
 class InputForm extends Component {
-    //this.props.handleSubmit(values => (this.props.createComment(values,this.props.id)))
-  
     render() {
       return (
         <form onSubmit={this.props.handleSubmit}>
           <label>Comment</label>
-          <Field name="comment" component={RenderInput}></Field>
+          <Field 
+          name="comment" 
+          component={renderField}
+          validate={maxLength255, required}></Field>
         </form>
       );
     }
-
-
 }
 
 InputForm = reduxForm({
