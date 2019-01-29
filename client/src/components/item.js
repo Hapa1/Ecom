@@ -19,6 +19,7 @@ const Comment = (comment) => {
         </div>
     )
 }
+
 class item extends React.Component{
     constructor(props) {
         super(props);

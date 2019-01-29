@@ -11,6 +11,7 @@ import axios from 'axios'
 import { throws } from 'assert';
 import * as actions from '../actions';
 import Profile from './profile.js';
+import EditProfile from './profile/editProfile';
 import InputForm from './input.js';
 import { reduxForm, Field } from 'redux-form'
 
@@ -42,6 +43,7 @@ class App extends Component {
 				<Route path="/items/:_id" component={Item} />
 				<Route exact path="/" component={Landing}/>
 				<Route path="/user/:_id" component={Profile} />
+				<Route path="/profile/edit" component={EditProfile} />
 				</div>
 				</BrowserRouter>
         </div>

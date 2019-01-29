@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as actions from '../actions/index.js';
 import { connect } from 'react-redux';
 import Form from './profile/form';
+import EditProfile from './profile/editProfile';
 class profile extends React.Component{
     componentDidMount(){
         this.props.getUser(this.props.match.params._id);
@@ -13,15 +14,10 @@ class profile extends React.Component{
         if(this.props.profile) {
             option = this.props.profile.name
         }
-        //if(this.props.stagesData.length === 0){
-        //    return null
-        //}
         return (
-            <div>
-                
-                Profile!
-               {option}
-               <Form/>
+            <div class="container">
+               <p><h4>{option}</h4></p>
+               <a href="/profile/edit"><button type="submit" class="btn btn-primary">Edit Profile</button></a>  
             </div>
         )
     }

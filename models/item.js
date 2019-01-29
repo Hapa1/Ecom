@@ -2,21 +2,6 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
-const baseOptions = {
-    discriminatorKey: 'itemtype', // our discriminator key, could be anything
-    collection: 'items', // the name of our collection
-  };
-  
-  // Our Base schema: these properties will be shared with our "real" schemas
-  const Base = mongoose.model('Base', new mongoose.Schema({
-        title: { type: String, required: true },
-        date_added: { type: Date, required: true },
-        redo: { type: Boolean, required: false },
-      }, baseOptions,
-    )
-);
-
-
 var itemSchema= new Schema({
     _user: {type: Schema.Types.ObjectId, ref: 'User'},
     comments: [{

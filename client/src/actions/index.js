@@ -15,7 +15,6 @@ export const fetchItems = () => async dispatch => {
 
 export const getUser = (_id) => async dispatch => {
   const res = await axios.get('/api/user/' + _id)
-  console.log('fetch profile');
   dispatch({
     type: "FETCH_PROFILE",
     payload: res.data,
@@ -32,7 +31,8 @@ export const getItem = (_id) => async dispatch => {
 };
 
 export const updateProfile = (values) => async dispatch => {
-  const res = await axios.post('/api/profile', values);
+  console.log(values)
+  const res = await axios.post('/api/profile/update', values);
   dispatch({ type: "FETCH_USER", payload: res.data});
 };
 

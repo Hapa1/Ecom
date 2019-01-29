@@ -32,12 +32,21 @@ var User = require('../models/user');
     const p = await User.find({ _id: req.params})
     res.send(p[0]);
   });
- 
+  router.post('/api/profile/update', async function(req,res){
+    console.log(req.body);
+    req.user.name = req.body.name
+    req.user.email = req.body.email
+    req.user.location = req.body.location
+    const user = await req.user.save();
+    res.send(user)
+  });
+
   router.post('/api/profile', async function(req, res) {
     //console.log(req.body.user.id)
-    const p = await User.find({ _id: '5c35bd2f000344119e66c3ef'})
+    const p = await User.find({ _id: req.user.id})
     console.log(req.body.name)
     p.name = req.body.name
+
     try {
       await p.save(); //async function
       res.send(comment)

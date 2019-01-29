@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as actions from '../actions';
 import {reducer as formReducer, reduxForm, Field} from 'redux-form';
 import { connect } from 'react-redux';
+import Form from './profile/form';
 
 const validate = values => {
   const errors = {}
@@ -10,10 +11,10 @@ const validate = values => {
   }
 }
 
-const maxLength = max => value =>
-  value && value.length > max ? `Must be ${max} characters or less` : undefined
-const maxLength255 = maxLength(255)
-const required = value => value ? undefined : 'Required'
+//const maxLength = max => value =>
+//  value && value.length > max ? `Must be ${max} characters or less` : undefined
+//const maxLength = maxLength(255)
+//const required = value => value ? undefined : 'Required'
 
   const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
     <div>
@@ -33,7 +34,7 @@ class InputForm extends Component {
           <Field 
           name="comment" 
           component={renderField}
-          validate={maxLength255, required}></Field>
+          ></Field>
         </form>
       );
     }
@@ -42,7 +43,6 @@ class InputForm extends Component {
 InputForm = reduxForm({
     validate,
     form: 'commentForm',
-    field: 'comment',
 })(InputForm);
 
 export default connect(null, actions)(InputForm);
