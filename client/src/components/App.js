@@ -12,6 +12,7 @@ import { throws } from 'assert';
 import * as actions from '../actions';
 import Profile from './profile.js';
 import EditProfile from './profile/editProfile';
+import NewItem from './item/newItem';
 import InputForm from './input.js';
 import { reduxForm, Field } from 'redux-form'
 
@@ -44,6 +45,7 @@ class App extends Component {
 				<Route exact path="/" component={Landing}/>
 				<Route path="/user/:_id" component={Profile} />
 				<Route path="/profile/edit" component={EditProfile} />
+				<Route path="/item/new" component={NewItem}></Route>
 				</div>
 				</BrowserRouter>
         </div>

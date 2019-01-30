@@ -10,26 +10,18 @@ const email = value =>
     ? 'Invalid email address'
     : undefined
 
-const field = ({
-        input,
-        label,
-        type,
+const field = ({input,label,type,
         meta: { touched, error, warning }
-      }) => (
+}) => (
         <div>
-          
           <div>
-          
-          <label>{label}</label>
+            <label>{label}</label>
             <input class="form-control" {...input} placeholder={label} type={type} />
-            
-            
           </div>
           <div>
-            {touched &&
-              ((error && <span>{error}</span>) ||
-                (warning && <span>{warning}</span>))}
-        </div>
+            {touched && ((error && <span>{error}</span>) ||
+            (warning && <span>{warning}</span>))}
+          </div>
         </div>
 )
 
@@ -37,7 +29,7 @@ class ProfileForm extends Component {
     renderfield(){
         return(
             <div class="form-group">
-                <Field label="Name"t ype="text" name="name" component={field}></Field>
+                <Field label="Name"type="text" name="name" component={field}></Field>
                 <Field validate={email} label="Email"type="text" name="email" component={field}></Field>
                 <Field label="Location"type="text" name="address" component={field}></Field>
             </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Form from './form';
 import { connect } from 'react-redux';
-import * as actions from '../../actions'
+import * as actions from '../../actions';
 import { Redirect } from 'react-router-dom';
 
 class EditProfile extends Component {
@@ -10,7 +10,6 @@ class EditProfile extends Component {
     }
 
     handleSubmit = (data) => {
-        console.log('hi')
         this.props.updateProfile(data)
         this.setState({ redirectToNewPage: true })
     }

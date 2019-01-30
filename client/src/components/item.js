@@ -102,7 +102,7 @@ class item extends React.Component{
         else {
             return(
                 <div>
-                    Loading
+                    Loading!
                 </div>
             )
         }

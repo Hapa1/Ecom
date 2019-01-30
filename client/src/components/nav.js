@@ -18,6 +18,9 @@ class nav extends React.Component{
 					<div class="collapse navbar-collapse" style={{marginTop:"5%"}}>
 						<ul class="navbar-nav ml-auto">
 						<li class="nav-item">
+							<a  style={{color:"white"}} class="nav-link" href="/item/new">Sell</a>
+						</li>
+						<li class="nav-item">
 							<a style={{color:"white"}} class="nav-link" href={"/user/" + this.props.user._id}>{this.props.user.name}</a>
 						</li>
 						<li class="nav-item">
