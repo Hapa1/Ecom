@@ -12,6 +12,7 @@ class EditProfile extends Component {
     handleSubmit = (data) => {
         this.props.updateProfile(data)
         this.setState({ redirectToNewPage: true })
+        var newFormObj  = new FormData(document.getElementById('form'));
     }
 
 

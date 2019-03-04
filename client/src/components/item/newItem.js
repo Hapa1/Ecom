@@ -8,7 +8,7 @@ class NewItem extends Component {
     handleSubmit = (data) => {
         console.log(data)
         this.props.newItem(data)
-        console.log(data.name)
+        
     }
 
     render(){

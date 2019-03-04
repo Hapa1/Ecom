@@ -53,7 +53,8 @@ export const test = () => {
 };
 
 export const newItem = (data) => async dispatch => {
-  console.log("Name: ",data)
+  
   const res = await axios.post('/api/createitem', {data})
   dispatch({ type: "FETCH_USER", payload: res.data});
+  
 }
