@@ -22,7 +22,10 @@ class ItemForm extends Component{
             <div>
                 <form onSubmit={this.props.handleSubmit}>
                     <div class="form-group">
-                        <Field label="Name" type="text" component={field}/>
+                        <Field label="Name" type="text" name="name" component={field}/>
+                        <Field label="Description" type="text" name="description" component={field}/>
+                        <Field label="Price" type="text" name="price" component={field}/>
+                        <Field label="Image" type="text" name="url" component={field}/>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

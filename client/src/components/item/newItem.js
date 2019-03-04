@@ -7,6 +7,8 @@ class NewItem extends Component {
 
     handleSubmit = (data) => {
         console.log(data)
+        this.props.newItem(data)
+        console.log(data.name)
     }
 
     render(){
@@ -18,4 +20,10 @@ class NewItem extends Component {
     }
 }
 
-export default connect(null, actions)(NewItem)
+const mapStateToProps = (state) => {
+    return {
+       user: state.userReducer,
+    }
+}
+
+export default connect(mapStateToProps, actions)(NewItem)

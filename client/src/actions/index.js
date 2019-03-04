@@ -51,3 +51,9 @@ export const fetchComments = (_id) => async dispatch => {
 export const test = () => {
   console.log('hello!');
 };
+
+export const newItem = (data) => async dispatch => {
+  console.log("Name: ",data)
+  const res = await axios.post('/api/createitem', {data})
+  dispatch({ type: "FETCH_USER", payload: res.data});
+}

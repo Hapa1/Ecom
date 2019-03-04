@@ -14,6 +14,9 @@ const userSchema = new Schema({
 	location: String,
 	comments: [{
 		type: Schema.Types.ObjectId, ref: 'comment'
+	}],
+	items: [{
+		type: Schema.Types.ObjectId, ref: 'item'
 	}]
 
 
